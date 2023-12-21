@@ -13,14 +13,17 @@ vscode.workspace.onDidChangeConfiguration(event => {
   });
   
 const getOwners = () => {
-    if (!vscode.window.activeTextEditor) {
-        return [];
+    const { fileName, uri } = vscode.window.activeTextEditor.document;
+
+    let workspacePath;
+    try {
+        workspacePath = vscode.workspace.getWorkspaceFolder(uri).uri.fsPath;
+    } catch {
+        // Handle error, e.g., no CODEOWNERS file
+        return null;
     }
 
-    const { fileName, uri } = vscode.window.activeTextEditor.document;
-    const workspacePath = vscode.workspace.getWorkspaceFolder(uri).uri.fsPath;
-
-    // Check if the Codeowners instance for this workspace path is cached
+// Check if the Codeowners instance for this workspace path is cached
     if (!codeownersCache[workspacePath]) {
         try {
             codeownersCache[workspacePath] = new Codeowners(workspacePath);
@@ -55,11 +58,10 @@ const activate = context => {
 
     context.subscriptions.push(
         vscode.window.onDidChangeActiveTextEditor(() => {
-            
             const owners = getOwners();
             let ownerWarning = '❌';
 
-            if (!owners) {
+            if (!owners || owners.length === 0) {
                 statusBarItem.hide();
                 return;
             }
