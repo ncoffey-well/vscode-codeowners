@@ -4,7 +4,7 @@
     "description": "VS Code extension for CODEOWNERS file",
     "publisher": "ncoffey-well",
     "repository": {
-        "url": "https://github.com/ncoffey-well/vscode-codeowners"
+        "url": "https://github.com/ncoffey-well/vscode-codeowners-warning"
     },
     "license": "MIT",
     "version": "1.2.0",
