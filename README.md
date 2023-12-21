@@ -4,6 +4,8 @@ VS Code extension to display the code owners for the current file, as defined in
 
 ## Features
 
+Will display ✅ or ❌ based on your ownership of the file.
+
 ### Syntax highlighting
 
 ![](./img/syntax_highlighting.png)

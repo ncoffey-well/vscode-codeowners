@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## v1.2.0
+
+Forked from https://github.com/jasonnutter/vscode-codeowners
+
+-   Added: Config option to specify your owner name and display checkmark or red x based on your ownership of a file
+-   Added: Config option to specify user name space to hide (to clean up warning display)
+
 ## v1.1.1
 
 Thanks to [@bmalehorn](https://github.com/bmalehorn) for these bug fixes!

@@ -1,13 +1,13 @@
 {
-    "name": "vscode-codeowners",
-    "displayName": "CODEOWNERS",
+    "name": "vscode-codeowners-warning",
+    "displayName": "CODEOWNERS Warning",
     "description": "VS Code extension for CODEOWNERS file",
-    "publisher": "jasonnutter",
+    "publisher": "ncoffey-well",
     "repository": {
-        "url": "https://github.com/jasonnutter/vscode-codeowners"
+        "url": "https://github.com/ncoffey-well/vscode-codeowners"
     },
     "license": "MIT",
-    "version": "1.1.1",
+    "version": "1.2.0",
     "engines": {
         "vscode": "^1.29.0"
     },
@@ -21,7 +21,7 @@
     "contributes": {
         "commands": [
             {
-                "command": "vscode-codeowners.show-owners",
+                "command": "vscode-codeowners-warning.show-owners",
                 "title": "CODEOWNERS: Show owners of current file"
             }
         ],
@@ -44,7 +44,24 @@
                 "scopeName": "text.codeowners",
                 "path": "./syntaxes/codeowners.tmLanguage.json"
             }
-        ]
+        ],
+        "configuration": {
+            "type": "object",
+            "title": "CODEOWNERS Configuration",
+            "properties": {
+              "vscode-codeowners-warning.codeOwnerName": {
+                "type": "string",
+                "default": "",
+                "description": "Enter your code owner name"
+              },
+              "vscode-codeowners-warning.codeOwnerNameReplace": {
+                "type": "string",
+                "default": "",
+                "description": "Enter owner name prefix you'd like to hide (optional)"
+              }
+            }
+        }
+    
     },
     "scripts": {
         "postinstall": "node ./node_modules/vscode/bin/install",
@@ -59,5 +76,5 @@
     },
     "dependencies": {
         "codeowners": "^4.1.1"
-    }
+    }      
 }
